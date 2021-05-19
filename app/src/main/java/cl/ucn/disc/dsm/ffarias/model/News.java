@@ -16,7 +16,7 @@ public final class News {
     /**
      * unique id.
      */
-    private final Long id;
+    private Long id;
 
     /**
      * The tittle.
@@ -65,16 +65,38 @@ public final class News {
      * @param content
      * @param publishedAt
      */
-    public News(String tittle, String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
-        // FIXME: add the hash (tittle + source + author)
-        this.id = 0L;
-        this.tittle = tittle;
+    public News(String tittle,final String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
+
+        // Tittle replace
+       if(tittle == null){
+          tittle = "No tittle";
+       }
+       this.tittle = tittle;
+
+
+       //Source validation
+       if(source == null ){
+           throw new IllegalArgumentException("Source no valid");
+
+       }
+       if(source.length() <= 4){
+           throw new IllegalArgumentException("Source no valid");
+       }
         this.source = source;
+
+
+        //   this.id = LongHashFunction.xx().hashChars(
+        //         tittle + "|" + source
+        // );
         this.author = author;
         this.url = url;
         this.urlImage = urlImage;
         this.description = description;
         this.content = content;
+
+        if(publishedAt == null){
+            throw new IllegalArgumentException("The publishedAt needed!");
+        }
         this.publishedAt = publishedAt;
     }
 
