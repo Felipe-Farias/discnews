@@ -8,11 +8,17 @@ The DISC News is an android Application.
 @startuml
 
 package externals* #ffcccc {
- package org.threeten.bp {
-  class ZonedDateTime {
-     ...
-   }
-  }
+    package org.threeten.bp {
+        class ZonedDateTime {
+             ...
+        }
+    }
+
+    package net.openhft.hashing{
+        class LongHashFunction{
+            ...
+        }
+    }
 }
 package cl.ucn.disc.dsm.ffarias {
 
@@ -40,7 +46,7 @@ package cl.ucn.disc.dsm.ffarias {
         } 
 
         News *--> "1" ZonedDateTime : - publishedAt
-       
+        News ..> LongHashFunction : <<use>>
     }
 
     package services #ccccff {
