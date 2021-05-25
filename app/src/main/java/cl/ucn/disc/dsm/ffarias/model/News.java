@@ -4,6 +4,8 @@
 
 package cl.ucn.disc.dsm.ffarias.model;
 
+import net.openhft.hashing.LongHashFunction;
+
 import java.time.ZonedDateTime;
 
 
@@ -80,20 +82,24 @@ public final class News {
 
        }
        if(source.length() <= 4){
-           throw new IllegalArgumentException("Source no valid");
+           throw new IllegalArgumentException("Source size was <= 4");
        }
         this.source = source;
 
+       // Hash xx (Tittle + source + author)
+       this.id = LongHashFunction.xx().hashChars(
+           this.getTittle() + "|" + this.getSource() + "|" + this.getAuthor()
+       );
 
-        //   this.id = LongHashFunction.xx().hashChars(
-        //         tittle + "|" + source
-        // );
-        this.author = author;
+       // Author
+        this.author = (author != null && author.length() > 0) ? author : "No author";
+
         this.url = url;
         this.urlImage = urlImage;
         this.description = description;
         this.content = content;
 
+        // publishedAt
         if(publishedAt == null){
             throw new IllegalArgumentException("The publishedAt needed!");
         }

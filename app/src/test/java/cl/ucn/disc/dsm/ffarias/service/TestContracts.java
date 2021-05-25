@@ -4,12 +4,17 @@
 
 package cl.ucn.disc.dsm.ffarias.service;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 import cl.ucn.disc.dsm.ffarias.model.News;
 
 public final class TestContracts {
+
+
 
     /**
      * Testing the constructor
@@ -23,7 +28,7 @@ public final class TestContracts {
 
     }
 
-    //@Test
+    @Test
     public void testSave(){
 
         // The contracts implementation
@@ -43,17 +48,17 @@ public final class TestContracts {
         contracts.save(news);
 
         // null news
-      //  Assertion.assertThrows(IllegalArgumentException.class, () -->{
-      //      contracts.save(null);
-      //  });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            contracts.save(null);
+        });
 
         // verify the size of the list
-       // Assertions.assertEquals(1, contracts.retrieveNews(10).size());
+            Assertions.assertEquals(1, contracts.retrieveNews(10).size());
 
 
         // Save into the backend v2.0
-        //  Assertion.assertThrows(IllegalArgumentException.class, () -->{
-        //      contracts.save(news);
-        //  });
+         Assertions.assertThrows(IllegalArgumentException.class, () ->{
+              contracts.save(news);
+          });
     }
 }
