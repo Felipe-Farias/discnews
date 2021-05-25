@@ -14,25 +14,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Base64;
 
+import cl.ucn.disc.dsm.ffarias.BaseTest;
 import cl.ucn.disc.dsm.ffarias.model.News;
 import cl.ucn.disc.dsm.ffarias.model.testNews;
 
-public final class TestContracts {
+public final class TestContracts extends BaseTest {
 
     /**
      * The Logger.
      */
     private static final Logger log = LoggerFactory.getLogger(testNews.class);
 
-    /**
-     *
-     * @param obj to transform.
-     * @return The string view of the object.
-     */
-    private static String toString(final Object obj){
-        return ToStringBuilder.reflectionToString(obj, ToStringStyle.MULTI_LINE_STYLE);
-    }
+
     /**
      * Testing the constructor
      */

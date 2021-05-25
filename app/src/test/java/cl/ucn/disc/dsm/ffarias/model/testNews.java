@@ -8,8 +8,7 @@ package cl.ucn.disc.dsm.ffarias.model;
 
 import com.github.javafaker.Faker;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -17,23 +16,17 @@ import org.slf4j.LoggerFactory;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import cl.ucn.disc.dsm.ffarias.BaseTest;
 
-public final class testNews {
+
+public final class testNews extends BaseTest {
 
     /**
      *  The Logger
      */
-
     private static final Logger log = LoggerFactory.getLogger(testNews.class);
 
-    /**
-     *
-     * @param obj to transform.
-     * @return The string view of the object.
-     */
-    private static String toString(final Object obj){
-        return ToStringBuilder.reflectionToString(obj, ToStringStyle.MULTI_LINE_STYLE);
-    }
+
 
 
     /**
