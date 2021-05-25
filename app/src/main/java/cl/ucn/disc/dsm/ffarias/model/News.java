@@ -67,7 +67,14 @@ public final class News {
      * @param content
      * @param publishedAt
      */
-    public News(String tittle,final String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
+    public News(final String tittle,
+                final String source,
+                final String author,
+                final String url,
+                final String urlImage,
+                final String description,
+                final String content,
+                ZonedDateTime publishedAt) {
 
         // Tittle replace
        this.tittle = ( tittle != null && tittle.length() > 0) ? tittle : "No tittle";

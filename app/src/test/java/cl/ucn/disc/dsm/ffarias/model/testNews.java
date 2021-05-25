@@ -27,8 +27,6 @@ public final class testNews extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(testNews.class);
 
 
-
-
     /**
      * Testing the constructor
      */
@@ -59,6 +57,10 @@ public final class testNews extends BaseTest {
           // Testing the internal class
             Assertions.assertNotNull(news.getId());
             Assertions.assertNotNull(news.getPublishedAt());
+            Assertions.assertNotNull(news.getUrl());
+            Assertions.assertNotNull(news.getUrlImage());
+            Assertions.assertNotNull(news.getDescription());
+            Assertions.assertNotNull(news.getContent());
         }
         // Test: no valid data
         {
