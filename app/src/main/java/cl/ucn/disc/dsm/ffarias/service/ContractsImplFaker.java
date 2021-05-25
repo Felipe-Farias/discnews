@@ -33,8 +33,16 @@ public final class ContractsImplFaker implements Contracts{
         if(size <= 0){
             throw new IllegalArgumentException("Size cannot be zero or negative");
         }
-        // Return the unmodifiable list
-        return Collections.unmodifiableList(this.listNews);
+
+        // Check the list
+        if(size > this.listNews.size()){
+            throw new IndexOutOfBoundsException("Size > the current size");
+        }
+
+        // Return the last size inside of unmodifiable list
+        return Collections.unmodifiableList(
+                this.listNews.subList(this.listNews.size()-size, this.listNews.size())
+        );
     }
 
     /**
@@ -59,6 +67,9 @@ public final class ContractsImplFaker implements Contracts{
         }
 
         this.listNews.add(news);
+
+        // Sort the list by publishedAt
+        this.listNews.sort((a, b)-> b.getPublishedAt().compareTo(a.getPublishedAt()));
 
     }
 }
