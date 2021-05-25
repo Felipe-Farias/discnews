@@ -70,10 +70,7 @@ public final class News {
     public News(String tittle,final String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
 
         // Tittle replace
-       if(tittle == null){
-          tittle = "No tittle";
-       }
-       this.tittle = tittle;
+       this.tittle = ( tittle != null && tittle.length() > 0) ? tittle : "No tittle";
 
 
        //Source validation

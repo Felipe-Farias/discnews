@@ -12,14 +12,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 
-public class testNews {
+public final class testNews {
 
     /**
      *  The Logger
@@ -44,13 +43,14 @@ public class testNews {
     @Test
     public void testConstructor(){
 
+        log.debug("Starting the testConstructor");
 
         //Generate test data
         Faker faker = new Faker();
 
         // Test: Valid data
-    {
-      News news =
+     {
+       News news =
           new News(
               faker.book().title(),
               faker.book().publisher(),
@@ -61,17 +61,12 @@ public class testNews {
               faker.dune().quote(),
               ZonedDateTime.now(ZoneId.of("-3")));
 
+       log.info("TheNews: " + toString(news));
+
           // Testing the internal class
             Assertions.assertNotNull(news.getId());
-            Assertions.assertEquals("The tittle", news.getTittle());
-            Assertions.assertEquals("The Source", news.getSource());
-            Assertions.assertEquals("The Author", news.getAuthor());
-            Assertions.assertEquals("The url", news.getUrl());
-            Assertions.assertEquals("The urlImage", news.getUrlImage());
-            Assertions.assertEquals("The description", news.getDescription());
-            Assertions.assertEquals("The content", news.getContent());
             Assertions.assertNotNull(news.getPublishedAt());
-    }
+        }
         // Test: no valid data
         {
 
@@ -123,6 +118,7 @@ public class testNews {
                     ZonedDateTime.now(ZoneId.of("-3")));
             Assertions.assertEquals("No tittle", news.getTittle());
         }
+        log.debug("Done.");
     }
 
 }
