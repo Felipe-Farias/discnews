@@ -57,6 +57,11 @@ package cl.ucn.disc.dsm.ffarias {
         }
         Contracts ..> News : <<use>>
 
+    class ContractsImplFaker{
+        - listNews : List<News> 
+    }
+       ContractsImplFaker ..|> Contracts 
+        contractsImplFaker ..> Faker : <<use>>
     }
 
 }
