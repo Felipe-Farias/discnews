@@ -46,7 +46,7 @@ dependencies {
 
     //JavaFaker
     // https://github.com/DiUS/java-faker
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 
     //Zero-Allocation Hashing
     //https://github.com/OpenHFT/Zero-Allocation-Hashing

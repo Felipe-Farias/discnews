@@ -4,6 +4,10 @@
 
 package cl.ucn.disc.dsm.ffarias.service;
 
+import com.github.javafaker.Faker;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +22,20 @@ public final class ContractsImplFaker implements Contracts{
      * The constructor.
      */
     public ContractsImplFaker() {
-        // Nothing here.
+        int n = 20;
+        Faker faker = new Faker();
+        for (int i=0 ; i<n; i++){
+            News news =
+                    new News(
+                            faker.book().title(),
+                            faker.book().publisher(),
+                            faker.book().author(),
+                            faker.internet().url(),
+                            faker.internet().url(),
+                            faker.book().genre(),
+                            faker.dune().quote(),
+                            ZonedDateTime.now(ZoneId.of("-3")));
+        }
     }
 
     /**
@@ -65,7 +82,7 @@ public final class ContractsImplFaker implements Contracts{
                 throw new IllegalArgumentException("News is already in the list");
             }
         }
-
+        //insert into the end of the list
         this.listNews.add(news);
 
         // Sort the list by publishedAt
