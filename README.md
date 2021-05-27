@@ -19,6 +19,11 @@ package externals* #ffcccc {
             ...
         }
     }
+    package com.github.javafaker{
+        class Faker {
+            ...
+        }   
+    }
 }
 package cl.ucn.disc.dsm.ffarias {
 
@@ -61,7 +66,7 @@ package cl.ucn.disc.dsm.ffarias {
         - listNews : List<News> 
     }
        ContractsImplFaker ..|> Contracts 
-        contractsImplFaker ..> Faker : <<use>>
+       ContractsImplFaker ..> Faker : <<use>>
     }
 
 }
