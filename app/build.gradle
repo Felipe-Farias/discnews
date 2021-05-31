@@ -25,6 +25,13 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
+    }
+    buildFeatures{
+        // Process the build config
+        buildConfig = true
+        // Enable the easy view Binding
+        viewBinding = true
     }
 }
 

@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="toolbarTittleTextColor">@color/green_0</color>
-    <color name="toolbarSubtittleTextColor">@color/green_100</color>
-    <color name="toolbarBackground">@color/green_80000</color>
-    </resources>
+    <color name="toolbarTittleTextColor">@color/green_400</color>
+    <color name="toolbarSubtittleTextColor">@color/green_600</color>
+    <color name="toolbarBackground">@color/green_1200</color>
+</resources>
