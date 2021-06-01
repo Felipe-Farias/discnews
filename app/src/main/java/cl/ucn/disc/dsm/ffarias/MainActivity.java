@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
         // Set the toolbar
-        this.setSupportActionBar(this.binding.toolbar);
+        this.setSupportActionBar(this.binding.Toolbar);
 
     }
     @Override

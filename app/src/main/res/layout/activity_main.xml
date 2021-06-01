@@ -8,12 +8,12 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/Toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/Toolbar"
+        android:theme="@style/Theme.Toolbar"
         app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp"
         app:title="@string/app_title"

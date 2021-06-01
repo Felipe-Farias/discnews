@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DiscNews" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.DiscNews" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
@@ -15,9 +15,9 @@
     </style>
 
     <!-- The toolbar Theme -->
-    <style name="Toolbar" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="Theme.Toolbar" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="android:background">@color/toolbarBackground</item>
-        <item name="title">@color/toolbarTittleTextColor</item>
-        <item name="subtitle">@color/toolbarSubtittleTextColor</item>
+        <item name="titleTextColor">@color/toolbarTittleTextColor</item>
+        <item name="subtitleTextColor">@color/toolbarSubtittleTextColor</item>
     </style>
 </resources>
