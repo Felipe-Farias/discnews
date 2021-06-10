@@ -1,6 +1,7 @@
 package cl.ucn.disc.dsm.ffarias;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cl.ucn.disc.dsm.ffarias.databinding.ActivityMainBinding;
+import cl.ucn.disc.dsm.ffarias.model.NewsViewModel;
 
 /**
  * The main class.
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
      */
      private ActivityMainBinding binding;
 
+    /**
+     * The NewsViewModel
+     */
+    private NewsViewModel newsViewModel;
 
     /**
      *
@@ -38,10 +44,33 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the xml
         this.binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(this.binding.getRoot());
+
         // Set the toolbar
         this.setSupportActionBar(this.binding.Toolbar);
 
+        // Build the newsViewModel
+        this.newsViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
+
+        // What to do with the swipe?
+        this.binding.amSrlRefresh.setOnRefreshListener(() -> {
+            log.debug("Refreshing the news... ");
+            this.newsViewModel.refresh();
+        });
+
+        // Observe the List of news
+        this.newsViewModel.getNews().observe(this, news -> {
+
+            log.debug("news: {}", news.size());
+
+            // Hide the rotating circle
+            this.binding.amSrlRefresh.setRefreshing(false);
+        });
+
     }
+
+    /**
+     * OnStart
+     */
     @Override
     protected void onStart(){
         super.onStart();
