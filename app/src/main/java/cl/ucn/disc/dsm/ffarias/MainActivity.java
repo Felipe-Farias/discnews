@@ -2,6 +2,8 @@ package cl.ucn.disc.dsm.ffarias;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private NewsViewModel newsViewModel;
 
     /**
+     * The NewsAdapter
+     */
+    private NewsAdapter newsAdapter;
+
+    /**
      *
      * @param savedInstanceState The instance.
      */
@@ -57,10 +64,28 @@ public class MainActivity extends AppCompatActivity {
             this.newsViewModel.refresh();
         });
 
+        // Instantiate the Adapter
+        this.newsAdapter = new NewsAdapter();
+
+        // Configure the RecyclerView
+        {
+
+            // 1. Layout
+           this.binding.amRvListNews.setLayoutManager(new LinearLayoutManager(this));
+           // 2. The Decoration
+           this.binding.amRvListNews.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+           // 3. The Adapter
+            this.binding.amRvListNews.setAdapter(this.newsAdapter);
+
+        }
+
         // Observe the List of news
         this.newsViewModel.getNews().observe(this, news -> {
 
             log.debug("news: {}", news.size());
+
+            // Notify the adapter with the list of news.
+            this.newsAdapter.setNews(news);
 
             // Hide the rotating circle
             this.binding.amSrlRefresh.setRefreshing(false);
