@@ -5,8 +5,7 @@
 package cl.ucn.disc.dsm.ffarias.model;
 
 import net.openhft.hashing.LongHashFunction;
-
-import java.time.ZonedDateTime;
+import org.threeten.bp.ZonedDateTime;
 
 
 /**
@@ -18,7 +17,7 @@ public final class News {
     /**
      * unique id.
      */
-    private Long id;
+    private final Long id;
 
     /**
      * The tittle.
@@ -85,8 +84,8 @@ public final class News {
            throw new IllegalArgumentException("Source no valid");
 
        }
-       if(source.length() <= 4){
-           throw new IllegalArgumentException("Source size was <= 4 [" + source + "]");
+       if(source.length() < 2){
+           throw new IllegalArgumentException("Source size was < 2 [" + source + "]");
        }
         this.source = source;
 
