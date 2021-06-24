@@ -7,7 +7,7 @@ def HOUR_MINUTE  = new Date().format("HHmm").toInteger()
 def BUILD_TIMESTAMP = 100000 * YEAR_WEEK + 10000 * DAY + HOUR_MINUTE
 
 // https://www.expertoanimal.com/razas-de-gatos.html
-def BUILD_NAME = "Ashera"
+def BUILD_NAME = "Dragonfly"
 
 def BUILD_VERSION_FULLNAME = "${BUILD_NAME} v${BUILD_TIMESTAMP}"
 
