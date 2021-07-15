@@ -133,7 +133,6 @@ public final class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsView
             this.rowNewsBinding.rnTvDescription.setText(news.getDescription());
 
             // ZonedDateTime to Date
-            // TODO: Preguntar al profe este error.
             final Date theDate = DateTimeUtils.toDate(news.getPublishedAt().toInstant());
 
             // Bind the Date
