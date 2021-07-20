@@ -6,8 +6,10 @@ package cl.ucn.disc.dsm.ffarias.service;
 
 import com.github.javafaker.Faker;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

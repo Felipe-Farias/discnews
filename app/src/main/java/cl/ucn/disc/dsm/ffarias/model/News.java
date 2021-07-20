@@ -6,8 +6,8 @@ package cl.ucn.disc.dsm.ffarias.model;
 
 import net.openhft.hashing.LongHashFunction;
 
-import java.time.ZonedDateTime;
 
+import org.threeten.bp.ZonedDateTime;
 
 /**
  * The class.
@@ -54,7 +54,7 @@ public final class News {
     /**
      * the date of publish.
      */
-    private final java.time.ZonedDateTime publishedAt;
+    private final ZonedDateTime publishedAt;
 
     /**
      * The constructor.
@@ -109,6 +109,7 @@ public final class News {
         }
         this.publishedAt = publishedAt;
     }
+
 
 
 

@@ -6,7 +6,6 @@ package cl.ucn.disc.dsm.ffarias;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.threeten.bp.DateTimeUtils;
 
-import java.time.format.DateTimeFormatter;
+import java.time.ZonedDateTime;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

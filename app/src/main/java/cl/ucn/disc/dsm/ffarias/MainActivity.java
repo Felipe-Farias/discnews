@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         // What to do with the swipe?
         this.binding.amSrlRefresh.setOnRefreshListener(() -> {
             log.debug("Refreshing the news... ");
-            this.newsViewModel.refresh();
+
+
         });
 
         // Instantiate the Adapter

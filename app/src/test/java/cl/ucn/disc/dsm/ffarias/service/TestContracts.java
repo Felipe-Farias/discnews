@@ -12,8 +12,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import org.threeten.bp.ZoneId;
+import org.threeten.bp.ZonedDateTime;
+
 import java.util.Base64;
 
 import cl.ucn.disc.dsm.ffarias.BaseTest;
