@@ -77,25 +77,25 @@ public final class News {
                 ZonedDateTime publishedAt) {
 
         // Tittle replace
-       this.tittle = ( tittle != null && tittle.length() > 0) ? tittle : "No tittle";
+        this.tittle = ( tittle != null && tittle.length() > 0) ? tittle : "No tittle";
 
 
-       //Source validation
-       if(source == null ){
-           throw new IllegalArgumentException("Source no valid");
+        //Source validation
+        if(source == null ){
+            throw new IllegalArgumentException("Source no valid");
 
-       }
-       if(source.length() < 2){
-           throw new IllegalArgumentException("Source size was < 2 [" + source + "]");
-       }
+        }
+        if(source.length() < 2){
+            throw new IllegalArgumentException("Source size was < 2 [" + source + "]");
+        }
         this.source = source;
 
-       // Hash xx (Tittle + source + author)
-       this.id = LongHashFunction.xx().hashChars(
-           this.getTittle() + "|" + this.getSource() + "|" + this.getAuthor()
-       );
+        // Hash xx (Tittle + source + author)
+        this.id = LongHashFunction.xx().hashChars(
+                this.getTittle() + "|" + this.getSource() + "|" + this.getAuthor()
+        );
 
-       // Author
+        // Author
         this.author = (author != null && author.length() > 0) ? author : "No author";
 
         this.url = url;

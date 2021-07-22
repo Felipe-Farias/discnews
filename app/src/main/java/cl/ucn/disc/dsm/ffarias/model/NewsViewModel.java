@@ -38,6 +38,11 @@ public class NewsViewModel extends AndroidViewModel {
   /** The list of news. */
   private final MutableLiveData<List<News>> theNews;
 
+  /** @return the list of news wrapped inside a LiveData */
+  public MutableLiveData<List<News>> getNews() {
+    return this.theNews;
+  }
+
   /**
    * The Constructor.
    *
@@ -45,14 +50,10 @@ public class NewsViewModel extends AndroidViewModel {
    */
   public NewsViewModel(final Application application) {
     super(application);
-    // TODO: call the new livedata constructor
     this.theNews = new MutableLiveData<>();
   }
 
-  /** @return the list of news wrapped inside a LiveData */
-  public LiveData<List<News>> getNews() {
-    return this.theNews;
-  }
+
 
   /** Refresh (get) the news from the backend. */
   public void refresh() {
@@ -66,17 +67,17 @@ public class NewsViewModel extends AndroidViewModel {
 
     {
       Executors.newSingleThreadExecutor()
-          .execute(
-              () -> {
-                List<News> news = this.contracts.retrieveNews(50);
+              .execute(
+                      () -> {
+                        List<News> news = this.contracts.retrieveNews(50);
 
-                // GUI thread
-                new Handler(Looper.getMainLooper())
-                    .post(
-                        () -> {
-                          this.theNews.setValue(news);
-                        });
-              });
+                        // GUI thread
+                        new Handler(Looper.getMainLooper())
+                                .post(
+                                        () -> {
+                                          this.theNews.setValue(news);
+                                        });
+                      });
     }
   }
 }

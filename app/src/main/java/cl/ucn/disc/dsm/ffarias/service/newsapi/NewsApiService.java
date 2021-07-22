@@ -4,6 +4,7 @@
 
 package cl.ucn.disc.dsm.ffarias.service.newsapi;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.threeten.bp.ZoneId;
@@ -66,7 +67,7 @@ public class NewsApiService implements Contracts {
     public List<News> retrieveNews(Integer size) {
 
         // The call to get the NewsAPI Response.
-        Call<NewsAPIResponse> theCall = this.newsAPI.getTopHeadlines(size, NewsAPI.Category.science);
+        Call<NewsAPIResponse> theCall = this.newsAPI.getTopHeadLines(size, NewsAPI.Category.science);
 
 
         try{
@@ -79,39 +80,37 @@ public class NewsApiService implements Contracts {
                 throw new RuntimeException("Can't get the news, response code: " + theResponse.code());
             }
 
+            // read the NewsAPIResponse from the body of the call (JSON)
+            NewsAPIResponse newsAPIResponse = theResponse.body();
 
+            if (newsAPIResponse == null){
 
-                // read the NewsAPIResponse from the body of the call (JSON)
-                NewsAPIResponse newsAPIResponse = theResponse.body();
+                throw new RuntimeException("Body of NewsAPI was null");
 
-                if (newsAPIResponse == null){
-
-                    throw new RuntimeException("Body of NewsAPI was null");
-
-                }
-                // The result
-                List<News> theNews = new ArrayList<>();
+            }
+            // The result
+            List<News> theNews = new ArrayList<>();
 
 
 
-                // iterate over the list the article
-                for (Article article : newsAPIResponse.articles){
+            // iterate over the list the article
+            for (Article article : newsAPIResponse.articles){
 
-                    News news = new News(
-                            article.title,
-                            article.source.name,
-                            article.author,
-                            article.url,
-                            article.urlToImage,
-                            article.description,
-                            article.content,
-                            parseDate(article.publishedAt)
-                    );
+                News news = new News(
+                        article.title,
+                        article.source.name,
+                        article.author,
+                        article.url,
+                        article.urlToImage,
+                        article.description,
+                        article.content,
+                        parseDate(article.publishedAt)
+                );
 
-                    theNews.add(news);
+                theNews.add(news);
 
-                }
-                return theNews;
+            }
+            return theNews;
 
         } catch (IOException e){
             log.error("Can't get the news", e);
@@ -130,11 +129,11 @@ public class NewsApiService implements Contracts {
     /**
      * Save one news to the System
      *
-     * @param news
+     * @param news to save
      */
     @Override
     public void save(News news) {
-
+        throw new NotImplementedException("Method not implemented!");
     }
 
 
@@ -147,29 +146,37 @@ public class NewsApiService implements Contracts {
         /**
          * The base URL
          */
-        String BASE_URL  = "https://newsapi.org/v2";
+        String BASE_URL  = "https://newsapi.org/v2/";
 
         /**
          * The API key.
          */
         String API_KEY = "378c4ef2a26240468ae08a464adfc30d";
 
+
         /**
          *
-         * @param pageSize The number of results to return per page.
-         * @return the call to get  NewsAPIResponse.
+         *  @return the Call with the link {@link NewsAPIResponse}
          */
-        @Headers("X-Api-Key" + API_KEY)
-        @GET("top-headlines")
-        Call<NewsAPIResponse> getTopHeadlines(@Query("pageSize") int pageSize);
+        @Headers("X-API-Key: "+API_KEY)
+        @GET("everything")
+        Call<NewsAPIResponse> getEverything();
 
         /**
          * https://newsapi.org/docs/endpoints/top-headlines
+         *
+         * @param pageSize The number of results to return per page (request). 20 is the default, 100 is the maximum.
+         * @return The call to get NewsAPIResponse
          */
-        @Headers("X-Api-Key" + API_KEY)
+
+        @Headers("X-Api-Key: "+ API_KEY)
         @GET("top-headlines")
-        Call<NewsAPIResponse> getTopHeadlines(@Query("pageSize") int pageSize,
-                                              @Query("Category") Category category);
+        Call<NewsAPIResponse> getTopHeadLines(@Query("PageSize") int pageSize);
+
+        @Headers("X-Api-Key: "+ API_KEY)
+        @GET("top-headlines")
+        Call<NewsAPIResponse> getTopHeadLines(@Query("PageSize") int pageSize,
+                                              @Query("category") Category category);
 
         /**
          * The category you want to get headlines for.

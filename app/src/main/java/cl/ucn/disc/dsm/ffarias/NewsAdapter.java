@@ -69,7 +69,7 @@ public final class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsView
         // Called the constructor inflating the layout.
         return new NewsViewHolder(
                 RowNewsBinding.inflate(
-                LayoutInflater.from(parent.getContext())
+                        LayoutInflater.from(parent.getContext())
                 )
         );
     }
